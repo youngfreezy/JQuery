@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animated Menu</title>
+    <link rel="stylesheet" href="css/animatedMenu.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+            var menuStatus = false;
+
+             function openMenu(){
+
+                $('#toggleMenu').animate({
+                    'text-indent': 1
+                },{
+                    duration: 1000,
+                    easing: 'linear',
+                    step:function(now){
+                        $(this).css('transform', 'rotateZ(' + (now * 360) + 'deg)');
+                    }
+                });
+                //Animate menuA
+
+                $('.menuA')
+                    .animate({
+                        top: '0px',
+                        opacity: 1
+                    }, 400)
+                        //expands menu div from circle to a rectangle
+                    .animate({
+                        width: '140px',
+                        'border-radius': '5px',
+                        left: '120px'
+                    }, 200)
+                        //expands rectangle down vertically to full menu
+                    .animate({
+                        height: '150px'
+                        //callback function below displays the submenu class inside the rectangle.  
+                    }, 400, function(){
+                        $('.submenu').fadeIn(100);
+                        menuStatus = true;
+                    });
+                //Animate menuB
+
+                $('.menuB')
+                    .animate({
+                        top: '370px',
+                        opacity: 1
+                    }, 400)
+                        //expands menu div from circle to a rectangle
+                    .animate({
+                        width: '140px',
+                        'border-radius': '5px',
+                        left: '120px'
+                    }, 200)
+                        //expands rectangle down vertically to full menu
+                    .animate({
+                        height: '150px',
+                        top: '230px'
+                        
+                    }, 400);
+
+             }
+
+             function closeMenu(){
+                 $('#toggleMenu').animate({
+                    'text-indent': 0
+                },{
+                    duration: 1000,
+                    easing: 'linear',
+                    step:function(now){
+                        $(this).css('transform', 'rotateZ(' + (now * 360) + 'deg)');
+                    }
+                });
+                //Animate menuA
+                $('.submenu').fadeOut(100);
+
+                $('.menuA')
+                    .animate({
+                        height: '10px'
+                    }, 400)
+                        //expands menu div from circle to a rectangle
+                    .animate({
+                        width: '10px',
+                        left: '185px',
+                        'border-radius' : '50px'
+                    }, 200)
+                        //expands rectangle down vertically to full menu
+                    .animate({
+                        top: '185px',
+                        opacity: 0
+                        //callback function below displays the submenu class inside the rectangle.  
+                    }, 400, function(){
+                        menuStatus = false;
+                    });
+                //Animate menuB
+
+               $('.menuB')
+                    .animate({
+                        height: '10px',
+                        top: '370px'
+                    }, 400)
+                        //expands menu div from circle to a rectangle
+                    .animate({
+                        width: '10px',
+                        left: '185px',
+                        'border-radius' : '50px'
+                    }, 200)
+                        //expands rectangle down vertically to full menu
+                    .animate({
+                        top: '185px',
+                        opacity: 0
+                        //callback function below displays the submenu class inside the rectangle.  
+                    }, 400);
+             }
+
+             $('#toggleMenu').on('click', function(){
+                if(menuStatus === false){
+                    openMenu();
+                } else{
+                    closeMenu();
+                }
+             });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="menuA">
+            <ul class="submenu">
+                <li><a href="#">Cellular Phones</a></li>
+                <li><a href="#">Phablets</a></li>
+                <li><a href="#">Laptops</a></li>
+                <li><a href="#">Desktops</a></li>
+                <li><a href="#">Workstations</a></li>
+            </ul>
+        </div>
+        <div class="menuB">
+            <ul class="submenu">
+                <li><a href="#">Fitness Trackers</a></li>
+                <li><a href="#">Smartwatches</a></li>
+                <li><a href="#">VOIP Phones</a></li>
+                <li><a href="#">Printers</a></li>
+                <li><a href="#">WiFi Routers</a></li>
+            </ul>
+        </div>
+        <a href="#" id="toggleMenu">M</a>
+    </div>
+</body>
+</html>
