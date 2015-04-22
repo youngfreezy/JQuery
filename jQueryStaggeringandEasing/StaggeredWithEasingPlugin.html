@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Stagger Animation</title>
@@ -8,37 +9,38 @@
     <!-- easing plugin: -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script>
-        $(function() {
-            var menuStatus = false;
+    $(function() {
+        var menuStatus = false;
 
-            function openMenu() {
-                $('.navMenu > li').each(function(index, element) {
-                    $(element).delay(200 * index).animate({
-                        height:'180px'
-                    }, 500, "easeOutBounce");
-                });
-                menuStatus = true;
-            }
-
-            function closeMenu() {
-                $($('.navMenu > li').get().reverse()).each(function(index, element) {
-                    $(element).delay(200 * index).animate({
-                        height:'5px'
-                    }, 500, "easeInBounce");
-                });
-                menuStatus = false;
-            }
-
-            $('#toggleMenu').on('click', function() {
-                if(menuStatus === false) {
-                    openMenu();
-                } else {
-                    closeMenu();
-                }
+        function openMenu() {
+            $('.navMenu > li').each(function(index, element) {
+                $(element).delay(200 * index).animate({
+                    height: '180px'
+                }, 500, "easeOutBounce");
             });
+            menuStatus = true;
+        }
+
+        function closeMenu() {
+            $($('.navMenu > li').get().reverse()).each(function(index, element) {
+                $(element).delay(200 * index).animate({
+                    height: '5px'
+                }, 500, "easeInBounce");
+            });
+            menuStatus = false;
+        }
+
+        $('#toggleMenu').on('click', function() {
+            if (menuStatus === false) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
         });
+    });
     </script>
 </head>
+
 <body>
     <div class="container">
         <a href="#" id="toggleMenu">M</a>
@@ -51,4 +53,5 @@
         <div class="bar"></div>
     </div>
 </body>
+
 </html>

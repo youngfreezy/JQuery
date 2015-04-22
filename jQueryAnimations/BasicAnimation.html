@@ -1,35 +1,37 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Animation Basics</title>
     <link rel="stylesheet" href="css/animationBasics.css" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script>
-        $(function() {
-           $('#pushCar').click(function() {
-                $('#car').animate({
-                  left: '+=50'
-                  }, 400); //move 50px to the right incrementally. 
-               
-           });
-           
-           $('#driveCar').click(function() {
-              $('#car').animate({
+    $(function() {
+        $('#pushCar').click(function() {
+            $('#car').animate({
+                left: '+=50'
+            }, 400); //move 50px to the right incrementally. 
+
+        });
+
+        $('#driveCar').click(function() {
+            $('#car').animate({
                 left: '580px'
             }, 1000); //move to 580px to the right within 1 second.  
-               
-           });
-           
-           $('#reverseCar').click(function() {
-               $('#car').animate({
-                  left: '0px'
-                }, 3000); //move back to 0px within 3 seconds.  
-               
-           });
+
         });
+
+        $('#reverseCar').click(function() {
+            $('#car').animate({
+                left: '0px'
+            }, 3000); //move back to 0px within 3 seconds.  
+
+        });
+    });
     </script>
 </head>
+
 <body>
     <div class="container">
         <img id="car" src="img/car.jpg" />
@@ -38,4 +40,5 @@
         <a href="#" id="reverseCar" class="btn">Reverse</a>
     </div>
 </body>
+
 </html>
